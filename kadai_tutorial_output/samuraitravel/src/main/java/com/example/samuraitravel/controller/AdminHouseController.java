@@ -38,10 +38,9 @@ public class AdminHouseController {
 			@PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
 			@RequestParam(name = "keyword", required = false) String keyword) {
 		Page<House> housePage;
-		housePage = houseRepository.findByNameLike("%" + keyword + "%", pageable);
 
 		if (keyword != null && !keyword.isEmpty()) {
-
+			housePage = houseRepository.findByNameLike("%" + keyword + "%", pageable);
 		} else {
 			housePage = houseRepository.findAll(pageable);
 		}
